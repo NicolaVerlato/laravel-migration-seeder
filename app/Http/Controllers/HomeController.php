@@ -9,12 +9,12 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $trips = Trip::all();
+        $trips = Trip::where('is_available', '=', 1)->get();
 
         $data = [
             'trips' =>  $trips
         ];
 
-        return view('home');
+        return view('home', $data);
     }
 }
